@@ -1,0 +1,8 @@
+[package]
+name = "mdseek"
+version = "0.1.0"
+edition = "2021"
+description = "A local Markdown knowledge-base search and analysis tool written in Rust."
+license = "MIT"
+
+[dependencies]

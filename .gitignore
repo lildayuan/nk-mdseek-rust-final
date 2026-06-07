@@ -1,0 +1,8 @@
+/target/
+/.mdseek-cache
+**/.mdseek-cache
+.DS_Store
+*.log
+agent-report.html
+demo-report.html
+/tmp/
