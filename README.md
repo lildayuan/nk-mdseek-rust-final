@@ -2,6 +2,8 @@
 
 `mdseek` 是一个用 Rust 编写的本地 Markdown 知识库搜索与分析工具。它可以扫描 Markdown 文件夹，解析标题、链接和标签，建立倒排索引，进行关键词搜索，并分析反向链接、失效链接和孤立文档。
 
+GitHub 仓库：https://github.com/lildayuan/nk-mdseek-rust-final
+
 这个项目适合作为 Rust 课程期末大作业：主要逻辑全部由 Rust 实现，包含模块化设计、错误处理、trait、struct、enum、泛型风格接口、文件系统处理、搜索算法和测试。
 
 ## 功能
