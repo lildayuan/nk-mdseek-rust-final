@@ -1,10 +1,25 @@
-# mdseek
+# InkTrace（墨链寻迹）
 
-`mdseek` 是一个用 Rust 编写的本地 Markdown 知识库搜索与分析工具。它可以扫描 Markdown 文件夹，解析标题、链接和标签，建立倒排索引，进行关键词搜索，并分析反向链接、失效链接和孤立文档。
+> 基于 Rust 的本地 Markdown 知识检索与关系分析工具
 
-GitHub 仓库：https://github.com/lildayuan/nk-mdseek-rust-final
+**InkTrace（墨链寻迹）** 是一个用 Rust 编写的本地 Markdown 知识库搜索与分析工具。名称中的“Ink”代表笔记与文字，“Trace”代表沿着关键词和链接追踪知识关系。它可以扫描 Markdown 文件夹，解析标题、链接和标签，建立倒排索引，进行关键词搜索，并分析反向链接、失效链接和孤立文档。
 
-这个项目适合作为 Rust 课程期末大作业：主要逻辑全部由 Rust 实现，包含模块化设计、错误处理、trait、struct、enum、泛型风格接口、文件系统处理、搜索算法和测试。
+当前命令行程序名为 `mdseek`，下文所有命令均可直接运行。
+
+源码仓库：[https://github.com/lildayuan/nk-mdseek-rust-final](https://github.com/lildayuan/nk-mdseek-rust-final)
+
+项目核心逻辑均使用 Rust 实现，涵盖模块化设计、错误处理、`trait`、`struct`、`enum`、文件系统操作、并发加载、搜索算法和自动化测试。
+
+
+本项目已在 Rust stable 工具链下完成以下验证：
+
+```bash
+cargo fmt --all -- --check
+cargo build --locked
+cargo test --locked
+cargo clippy --all-targets --locked -- -D warnings
+cargo run --locked -- help
+```
 
 ## 功能
 
@@ -19,17 +34,26 @@ GitHub 仓库：https://github.com/lildayuan/nk-mdseek-rust-final
 - 主动推荐潜在缺失的笔记链接
 - 给知识库健康评分并输出修复建议
 
-## 编译与运行
+## 环境要求
+
+- Rust stable
+- Cargo
+
+项目不依赖第三方 crate，不需要额外安装数据库或其他服务。
+
+## 下载、编译与运行
 
 ```bash
-cargo build
-cargo test
-cargo run -- help
+git clone https://github.com/lildayuan/nk-mdseek-rust-final.git
+cd nk-mdseek-rust-final
+cargo build --locked
+cargo test --locked
+cargo run --locked -- help
 ```
 
 ## 依赖说明
 
-项目没有使用第三方 crate，运行环境只需要 Rust stable 工具链和 Cargo。扫描、解析、索引、搜索、缓存和并发加载均使用 Rust 标准库实现。
+扫描、解析、索引、搜索、缓存和并发加载均使用 Rust 标准库实现。
 
 使用示例：
 
@@ -110,6 +134,8 @@ tests/
 ## 展示样例
 
 `examples/agent-notes/` 是专门为展示视频准备的 agent 主题样例知识库，包含搜索命中、断链、孤立文档、潜在缺失链接和健康评分等场景。推荐录屏顺序：
+
+完整的分镜、旁白和命令参见：[5 分钟演示视频脚本](examples/agent-notes/5分钟演示视频脚本.md)。
 
 ```bash
 cargo run -- search "工具调用" --root ./examples/agent-notes --limit 3
